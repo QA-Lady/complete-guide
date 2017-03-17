@@ -1,0 +1,3 @@
+rootProject.name = 'selenium-complete-guide'
+include 'java-example'
+
