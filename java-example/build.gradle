@@ -9,11 +9,21 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useTestNG()
+
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+//    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.testng:testng:6.11'
     compile 'org.seleniumhq.selenium:selenium-java:3.3.1'
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
