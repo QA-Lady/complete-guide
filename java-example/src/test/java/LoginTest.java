@@ -12,6 +12,7 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginTest() {
+        driver.get("http://localhost/litecart/admin/");
         wait.until(ExpectedConditions.titleIs("My Store"));
         WebElement loginBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='box-login']")));
         System.out.println("Check that login box is displayed");

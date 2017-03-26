@@ -10,16 +10,32 @@ repositories {
 }
 
 test {
-    useTestNG()
-
+    useTestNG() {
+        suites 'src/test/resources/' + suite
+    }
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
+
+    if (project.hasProperty('suite')) {
+        systemProperty 'suite', "${suite}"
+    }
+
+//    beforeTest { descriptor ->
+//        logger.lifecycle("Running test: " + $descriptor.className)
+//    }
+//    beforeTest {
+//        if (project.hasProperty('browser')) {
+//            systemProperty 'browser', "${browser}"
+//        }
+//    }
+
+    maxParallelForks = 10
 }
 
 dependencies {
 //    testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'org.testng:testng:6.11'
+    compile 'org.testng:testng:6.8.7'
     compile 'org.seleniumhq.selenium:selenium-java:3.3.1'
 }
 

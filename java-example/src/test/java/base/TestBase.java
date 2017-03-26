@@ -12,24 +12,33 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by QA Lady on 3/16/2017.
  */
 public class TestBase {
 
-    public static WebDriver driver;
+    public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+    public WebDriver driver;
     public static WebDriverWait wait;
     DesiredCapabilities capabilities = new DesiredCapabilities();
 
+    private static List<WebDriver> drivers = new ArrayList<>();
 
     @Parameters({"browser"})
-    @BeforeSuite(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void configDriver(String browser) {
+        if (threadLocalDriver.get() != null) {
+            driver = threadLocalDriver.get();
+            return;
+        }
+        System.out.println("Starting beforeTest for " + browser + " on thread:  " + Thread.currentThread().hashCode());
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
 //            where is driver (when not added to system path but is available locally)
@@ -45,7 +54,7 @@ public class TestBase {
 //        when is built with the project from resources folder
 //            System.setProperty("webdriver.gecko.driver", TestBase.class.getResource("/drivers/geckodriver.exe").getFile());
 //            where is browser
-            System.out.println("Starting dd from C:/Program Files/Mozilla Firefox/firefox.exe");
+            System.out.println("Starting ff from C:/Program Files/Mozilla Firefox/firefox.exe");
             capabilities.setCapability(FirefoxDriver.BINARY, "C:/Program Files/Mozilla Firefox/firefox.exe");
 
             //we may skip next capability when starting geckodriver for new FF just use new FirefoxDriver();
@@ -74,7 +83,6 @@ public class TestBase {
                     new FirefoxOptions()
                             .setLegacy(true)
                             .setBinary(new FirefoxBinary(new File("C:/Dev_Tools/Drivers/ESR/firefox.exe"))).addDesiredCapabilities(capabilities));
-
             System.out.println(((HasCapabilities) driver).getCapabilities());
         } else if (browser.equalsIgnoreCase("ff_n")) {
 //        where is driver
@@ -97,6 +105,9 @@ public class TestBase {
 //                    .build();
 //            InternetExplorerDriver driver = new InternetExplorerDriver(service);
         }
+        //set thread local driver
+        threadLocalDriver.set(driver);
+        drivers.add(driver);
         //assigning wait value to be use in explicit waits
         wait = new WebDriverWait(driver, 10);
         if (!browser.equalsIgnoreCase("chrome")) {
@@ -111,7 +122,9 @@ public class TestBase {
 
     @AfterSuite
     public void quitDriver() {
-        driver.close();
-        driver.quit();
+        for (WebDriver webDriver : drivers) {
+            webDriver.close();
+            webDriver.quit();
+        }
     }
 }
