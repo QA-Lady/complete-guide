@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite" data-provider-thread-count="1" thread-count="1">
+    <test name="MenuTests">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="MenuTests">
+            </class>
+        </classes>
+    </test>
+</suite>

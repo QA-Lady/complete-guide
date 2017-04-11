@@ -37,4 +37,6 @@ public class LoginTest extends TestBase {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@id='box-apps-menu']")));
         System.out.println("Login successful");
     }
+
+
 }

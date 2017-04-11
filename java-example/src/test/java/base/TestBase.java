@@ -27,6 +27,7 @@ public class TestBase {
     public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
     public WebDriver driver;
     public static WebDriverWait wait;
+    public static WebDriverWait shortWait;
     DesiredCapabilities capabilities = new DesiredCapabilities();
 
     private static List<WebDriver> drivers = new ArrayList<>();
@@ -110,14 +111,13 @@ public class TestBase {
         drivers.add(driver);
         //assigning wait value to be use in explicit waits
         wait = new WebDriverWait(driver, 10);
+        shortWait = new WebDriverWait(driver, 2);
         if (!browser.equalsIgnoreCase("chrome")) {
             driver.manage().window().maximize();
         }
         driver.get("http://localhost/litecart/admin/");
         //implicit wait
 //        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-
     }
 
     @AfterSuite
