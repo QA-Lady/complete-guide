@@ -7,4 +7,11 @@
             </class>
         </classes>
     </test>
+    <test name="Sticker Tests">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="StickersTests">
+            </class>
+        </classes>
+    </test>
 </suite>
