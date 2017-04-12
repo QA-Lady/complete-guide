@@ -18,6 +18,8 @@ public class StickersTests extends TestBase {
         List<WebElement> allProducts = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[starts-with(@id, 'box-')]//ul[@class='listing-wrapper products']/li")));
         for (int i = 0; i < allProducts.size(); i++) {
             WebElement product = allProducts.get(i);
+            WebElement section = product.findElement((By.xpath("./../../../h3")));
+            System.out.println("Checking product from section: '" + section.getText() + "'");
             String productTitle = product.findElement(By.xpath("./a")).getAttribute("title");
             List<WebElement> stickers = product.findElements(By.xpath(".//div[starts-with(@class, 'sticker')]"));
             //each product should contain only 1 sticker

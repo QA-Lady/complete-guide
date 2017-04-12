@@ -28,6 +28,7 @@ public class TestBase {
     public WebDriver driver;
     public static WebDriverWait wait;
     public static WebDriverWait shortWait;
+    public static WebDriverWait longWait;
     DesiredCapabilities capabilities = new DesiredCapabilities();
 
     private static List<WebDriver> drivers = new ArrayList<>();
@@ -112,6 +113,7 @@ public class TestBase {
         //assigning wait value to be use in explicit waits
         wait = new WebDriverWait(driver, 10);
         shortWait = new WebDriverWait(driver, 2);
+        longWait = new WebDriverWait(driver, 20);
         if (!browser.equalsIgnoreCase("chrome")) {
             driver.manage().window().maximize();
         }

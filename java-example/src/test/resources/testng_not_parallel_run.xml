@@ -1,16 +1,27 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite" data-provider-thread-count="1" thread-count="1">
-    <test name="MenuTests">
-        <parameter name="browser" value="Chrome"/>
+    <!--<test name="MenuTests">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="MenuTests">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="Sticker Tests">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="StickersTests">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Countries and Zones Tests">
+        <parameter name="browser" value="ff_n"/>
         <classes>
-            <class name="MenuTests">
-            </class>
-        </classes>
-    </test>
-    <test name="Sticker Tests">
-        <parameter name="browser" value="Chrome"/>
-        <classes>
-            <class name="StickersTests">
+            <class name="CountriesTests">
+                <!--<methods>-->
+                <!--<include name="sortingCheck2"/>-->
+                <!--<exclude name="sortingCheck"/>-->
+                <!--</methods>-->
             </class>
         </classes>
     </test>
