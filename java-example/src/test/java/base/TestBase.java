@@ -1,8 +1,7 @@
 package base;
 
 
-import org.openqa.selenium.HasCapabilities;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -97,7 +96,7 @@ public class TestBase {
         } else if (browser.contains("ie")) {
             System.setProperty("webdriver.ie.driver", TestBase.class.getResource("/drivers/IEDriverServer.exe").getFile());
             capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-//        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
             driver = new InternetExplorerDriver(capabilities);
             System.out.println(((HasCapabilities) driver).getCapabilities());
             //start IE with detailed log
@@ -129,4 +128,34 @@ public class TestBase {
             webDriver.quit();
         }
     }
+
+    //--------------------------------------------------------------------------------------------------------------//
+
+
+    public boolean isElementPresent(WebDriver driver, WebElement parentElement, By locator) {
+        try {
+            parentElement.findElement(locator);
+            return true;
+        } catch (InvalidSelectorException ex) {
+            throw ex;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    public boolean isElementPresent(WebDriver driver, By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (InvalidSelectorException ex) {
+            throw ex;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    public boolean areElementsPresent(WebDriver driver, By locator) {
+        return driver.findElements(locator).size() > 0;
+    }
+
 }

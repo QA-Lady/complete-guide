@@ -14,14 +14,21 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="Countries and Zones Tests">
-        <parameter name="browser" value="ff_n"/>
+    <!--<test name="Countries and Zones Tests">-->
+    <!--<parameter name="browser" value="ff_n"/>-->
+    <!--<classes>-->
+    <!--<class name="CountriesTests">-->
+    <!--&lt;!&ndash;<methods>&ndash;&gt;-->
+    <!--&lt;!&ndash;<include name="sortingCheck2"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<exclude name="sortingCheck"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</methods>&ndash;&gt;-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Styles Tests">
+        <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="CountriesTests">
-                <!--<methods>-->
-                <!--<include name="sortingCheck2"/>-->
-                <!--<exclude name="sortingCheck"/>-->
-                <!--</methods>-->
+            <class name="StylesTests">
             </class>
         </classes>
     </test>
