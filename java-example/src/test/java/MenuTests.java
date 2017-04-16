@@ -15,7 +15,7 @@ public class MenuTests extends TestBase {
     @Test
     public void menuClickTest() {
         driver.get("http://localhost/litecart/admin/");
-        LoginHelper.doLogin();
+        LoginHelper.doLogin("admin", "admin");
         List<WebElement> parentMenuItems = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@id='box-apps-menu-wrapper']/ul/li")));
         for (int i = 0; i < parentMenuItems.size(); i++) {
             WebElement parentMenu = parentMenuItems.get(i);

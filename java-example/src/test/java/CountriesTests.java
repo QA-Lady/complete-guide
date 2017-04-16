@@ -20,7 +20,7 @@ public class CountriesTests extends TestBase {
     @Test
     public void sortingCheck() {
         driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
-        LoginHelper.doLogin();
+        LoginHelper.doLogin("admin", "admin");
         List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//table[@class='dataTable']//tr[@class='row']")));
         List<String> countries = new ArrayList<>();
         List<String> zones = new ArrayList<>();
@@ -64,7 +64,7 @@ public class CountriesTests extends TestBase {
     @Test
     public void sortingCheck2() {
         driver.navigate().to("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
-        LoginHelper.doLogin();
+        LoginHelper.doLogin("admin", "admin");
         List<WebElement> countries = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//table[@class='dataTable']//tr[@class='row']/td[3]/a")));
         List<String> countriesLabels = new ArrayList<>();
         List<String> zones = new ArrayList<>();
