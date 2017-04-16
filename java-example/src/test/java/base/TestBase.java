@@ -130,7 +130,7 @@ public class TestBase {
     }
 
     //--------------------------------------------------------------------------------------------------------------//
-
+//common methods
 
     public boolean isElementPresent(WebDriver driver, WebElement parentElement, By locator) {
         try {
@@ -158,4 +158,14 @@ public class TestBase {
         return driver.findElements(locator).size() > 0;
     }
 
+
+    public void enterText(WebElement element, String text, boolean masked) {
+        element.clear();
+        if (masked == true) {
+            // put cursor to the beginning before the mask
+            element.sendKeys(Keys.HOME + text);
+        } else {
+            element.sendKeys(text);
+        }
+    }
 }

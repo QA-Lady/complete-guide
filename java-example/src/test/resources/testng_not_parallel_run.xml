@@ -32,10 +32,17 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="Create new users">
-        <parameter name="browser" value="Chrome"/>
+    <!--<test name="Create new users">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="NewUserTests">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Add new product">
+        <parameter name="browser" value="ff_n"/>
         <classes>
-            <class name="NewUserTests">
+            <class name="AddProductTest">
             </class>
         </classes>
     </test>

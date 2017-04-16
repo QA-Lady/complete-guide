@@ -1,7 +1,6 @@
 import base.TestBase;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -61,7 +60,7 @@ public class NewUserTests extends TestBase {
         System.out.println("Click on 'Create Account' button");
         WebElement createAccountBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@value='Create Account']")));
         createAccountBtn.click();
-        System.out.println("Check that account has been successfuly created");
+        System.out.println("Check that account has been successfully created");
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='notices']/div")));
         Assert.assertEquals(successMessage.getText(), "Your customer account has been created.", "check success message");
         LoginHelper.doLogout();
@@ -73,17 +72,6 @@ public class NewUserTests extends TestBase {
         LoginHelper.doLogin(emailID, password);
         System.out.println("Logout again");
         LoginHelper.doLogout();
-    }
-
-
-    public void enterText(WebElement element, String text, boolean masked) {
-        element.clear();
-        if (masked == true) {
-            // put cursor to the beginning before the mask
-            element.sendKeys(Keys.HOME + text);
-        } else {
-            element.sendKeys(text);
-        }
     }
 
 }
