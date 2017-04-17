@@ -1,0 +1,39 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Grid Test Suite" parallel="tests" data-provider-thread-count="4" thread-count="4" verbose="1">
+    <test name="Windows+IE9 Test">
+        <parameter name="browser" value="Internet Explorer"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="version" value="8"/>
+        <parameter name="url" value="${url}"/>
+        <classes>
+            <class name="WindowsTest"/>
+        </classes>
+    </test>
+    <test name="Mac+Firefox Test">
+        <parameter name="browser" value="Firefox"/>
+        <parameter name="platform" value="Mac"/>
+        <parameter name="version" value="10.12.4"/>
+        <parameter name="url" value="${url}"/>
+        <classes>
+            <class name="WindowsTest"/>
+        </classes>
+    </test>
+    <test name="iOS Test">
+        <parameter name="browser" value="iPad"/>
+        <parameter name="platform" value="MAC"/>
+        <parameter name="version" value=""/>
+        <parameter name="url" value="${url}"/>
+        <classes>
+            <class name="WindowsTest"/>
+        </classes>
+    </test>
+    <test name="Andorid Test">
+        <parameter name="browser" value="Android"/>
+        <parameter name="platform" value="Android"/>
+        <parameter name="version" value="2.6"/>
+        <parameter name="url" value="${url}"/>
+        <classes>
+            <class name="WindowsTest"/>
+        </classes>
+    </test>
+</suite>
