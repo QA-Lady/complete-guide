@@ -39,10 +39,17 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="Add new product">
+    <!--<test name="Add new product">-->
+    <!--<parameter name="browser" value="ff_n"/>-->
+    <!--<classes>-->
+    <!--<class name="AddProductTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Shopping Cart test">
         <parameter name="browser" value="ff_n"/>
         <classes>
-            <class name="AddProductTest">
+            <class name="ShoppingCartTest">
             </class>
         </classes>
     </test>
