@@ -46,10 +46,17 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="Shopping Cart test">
+    <!--<test name="Shopping Cart test">-->
+    <!--<parameter name="browser" value="ff_n"/>-->
+    <!--<classes>-->
+    <!--<class name="ShoppingCartTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Multiple Windows test">
         <parameter name="browser" value="ff_n"/>
         <classes>
-            <class name="ShoppingCartTest">
+            <class name="WindowsTest">
             </class>
         </classes>
     </test>
