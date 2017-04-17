@@ -39,7 +39,8 @@ public class WindowsTest extends TestBase {
             Set<String> existingWindows = driver.getWindowHandles();
             System.out.println("Click on External Link #" + (i + 1) + " to Open New Window");
             externalLink.click();
-            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+            // the wait using anyWindowOtherThan() function is enough
+//            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
             String newWindow = wait.until(anyWindowOtherThan(existingWindows));
             //switch to new window
             driver.switchTo().window(newWindow);
@@ -52,7 +53,7 @@ public class WindowsTest extends TestBase {
         }
     }
 
-    private <V> ExpectedCondition<String> anyWindowOtherThan(Set<String> oldWindows) {
+    public <V> ExpectedCondition<String> anyWindowOtherThan(Set<String> oldWindows) {
         return new ExpectedCondition<String>() {
             public String apply(WebDriver driver) {
                 Set<String> handles = driver.getWindowHandles();
