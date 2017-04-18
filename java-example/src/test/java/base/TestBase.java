@@ -111,6 +111,48 @@ public class TestBase {
 //                    .build();
 //            InternetExplorerDriver driver = new InternetExplorerDriver(service);
             }
+        } else if (browser.contentEquals("remote.ie.windowsXP")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.internetExplorer();
+            capabillities.setCapability("platform", "Windows XP");
+            capabillities.setCapability("version", "8");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
+        } else if (browser.contentEquals("remote.firefox.windows7")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.firefox();
+            capabillities.setCapability("platform", "Windows 7");
+            capabillities.setCapability("version", "Firefox 52");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
+        } else if (browser.contentEquals("remote.chrome.windows8")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.chrome();
+            capabillities.setCapability("platform", "Windows 8");
+            capabillities.setCapability("version", "");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
+        } else if (browser.contentEquals("remote.chrome.linux")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.chrome();
+            capabillities.setCapability("platform", "Linux");
+            capabillities.setCapability("version", "");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
+        } else if (browser.contentEquals("remote.OSX10.8.ipad")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.ipad();
+            capabillities.setCapability("platform", "OS X 10.8");
+            capabillities.setCapability("version", "6");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
+        } else if (browser.contentEquals("remote.mobile.android")) {
+            DesiredCapabilities capabillities = DesiredCapabilities.android();
+            capabillities.setCapability("platform", "Linux");
+            capabillities.setCapability("version", "4.0");
+            this.driver = new RemoteWebDriver(
+                    new URL("http://QA_Lady:f6224eba-1654-4f62-9023-4d72fbf04c21@ondemand.saucelabs.com:80/wd/hub"),
+                    capabillities);
         } else {
             //Platforms
             if (platform.equalsIgnoreCase("Windows"))
@@ -207,6 +249,7 @@ public class TestBase {
             element.sendKeys(Keys.HOME + text);
         } else {
             element.sendKeys(text);
+
         }
     }
 }

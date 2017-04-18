@@ -46,6 +46,7 @@ dependencies {
 //    testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.testng:testng:6.8.7'
     compile 'org.seleniumhq.selenium:selenium-java:3.3.1'
+    testCompile'com.saucelabs:sauce_testng:2.1.21'
 }
 
 tasks.withType(JavaCompile) {

@@ -53,8 +53,15 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
+    <!--<test name="Multiple Windows test">-->
+    <!--<parameter name="browser" value="ff_n"/>-->
+    <!--<classes>-->
+    <!--<class name="WindowsTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
     <test name="Multiple Windows test">
-        <parameter name="browser" value="ff_n"/>
+        <parameter name="browser" value="remote.firefox.windows7"/>
         <classes>
             <class name="WindowsTest">
             </class>
