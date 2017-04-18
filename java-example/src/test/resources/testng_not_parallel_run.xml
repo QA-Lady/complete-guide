@@ -67,11 +67,18 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="EventFiring Stickers test">
+    <test name="Chrome Browser Logs test">
         <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="BrowserLogTest">
             </class>
         </classes>
     </test>
+    <!--<test name="FireFox Browser Logs test">-->
+    <!--<parameter name="browser" value="firefox_old"/>-->
+    <!--<classes>-->
+    <!--<class name="BrowserLogTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
 </suite>

@@ -28,11 +28,12 @@ public class BrowserLogTest extends TestBase {
         List<WebElement> productsDucks = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table[@class='dataTable']//tr/td[3]//a[contains(text(), 'Duck')][not(contains(text(), 'Rubber Ducks'))]")));
         for (int i = 0; i < productsDucks.size(); i++) {
             WebElement product = productsDucks.get(i);
-//            ((Locatable) product).getCoordinates().inViewPort();
             product.click();
             wait.until(ExpectedConditions.urlContains("edit_product&category_id"));
             List<String> browserLog = getBrowserLog();
+            System.out.println("Check that browserLog has logs");
             Assert.assertFalse(browserLog.isEmpty(), "browser log should not be empty");
+            //
             driver.navigate().back();
             //getting original products after navigated back
             productsDucks = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table[@class='dataTable']//tr/td[3]//a[contains(text(), 'Duck')][not(contains(text(), 'Rubber Ducks'))]")));

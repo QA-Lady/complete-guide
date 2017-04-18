@@ -107,7 +107,7 @@ public class AddProductTest extends TestBase {
         WebElement saveBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name='save']")));
         saveBtn.click();
         wait.until(ExpectedConditions.invisibilityOf(saveBtn));
-        System.out.println("Check that account has been successfully created");
+        System.out.println("Check that product has been successfully created");
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='notices']/div")));
         Assert.assertEquals(successMessage.getText(), "Changes were successfully saved.", "check success message");
         System.out.println("Check that product with correct name is added to the Catalog");
