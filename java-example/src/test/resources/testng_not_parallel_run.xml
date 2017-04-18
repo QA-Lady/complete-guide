@@ -60,10 +60,17 @@
     <!--</class>-->
     <!--</classes>-->
     <!--</test>-->
-    <test name="Multiple Windows test">
-        <parameter name="browser" value="remote.firefox.windows7"/>
+    <!--<test name="Multiple Windows  on SauceLabs test">-->
+    <!--<parameter name="browser" value="remote.firefox.windows7"/>-->
+    <!--<classes>-->
+    <!--<class name="WindowsTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="EventFiring Stickers test">
+        <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="WindowsTest">
+            <class name="BrowserLogTest">
             </class>
         </classes>
     </test>
