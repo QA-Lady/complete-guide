@@ -1,6 +1,10 @@
 package base;
 
 
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -40,6 +44,7 @@ public class TestBase {
     public static WebDriverWait longWait;
     DesiredCapabilities capabilities = new DesiredCapabilities();
     LoggingPreferences logPrefs = new LoggingPreferences();
+    public BrowserMobProxy proxy;
 
     private static List<WebDriver> drivers = new ArrayList<>();
 
@@ -92,7 +97,24 @@ public class TestBase {
 //                driver = new EventFiringWebDriver(new ChromeDriver(options));
 //                //cast driver to EventFiringWebDriver
 //                ((EventFiringWebDriver) driver).register(new MyListener());
-//
+            } else if (browser.equalsIgnoreCase("Proxy")) {
+                // start the proxy
+                proxy = new BrowserMobProxyServer();
+                proxy.start(0);
+                int port = proxy.getPort();
+
+                // get the Selenium proxy object
+                Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+
+                // configure it as a desired capability
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
+
+                // start the browser up
+                driver = new ChromeDriver(capabilities);
+
+                // enable more detailed HAR capture, if desired (see CaptureType for the complete list)
+                proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
             } else if (browser.equalsIgnoreCase("firefox")) {
 //        where is driver (when not added to system path but is available locally)
                 System.setProperty("webdriver.gecko.driver", "C:/Dev_Tools/Drivers/geckodriver.exe");
@@ -243,7 +265,7 @@ public class TestBase {
         shortWait = new WebDriverWait(driver, 2);
         longWait = new WebDriverWait(driver, 20);
 //        if (!browser.equalsIgnoreCase("chrome")) {
-            driver.manage().window().maximize();
+        driver.manage().window().maximize();
 //        }
 
 

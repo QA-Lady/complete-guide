@@ -1,0 +1,52 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite" data-provider-thread-count="3" thread-count="3" parallel="tests">
+    <!--<test name="ChromeTest 1">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="ChromeTest 2">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="ChromeTest 3">-->
+    <!--<parameter name="browser" value="Chrome"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="FirefoxTest">-->
+    <!--<parameter name="browser" value="ff_n"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="FF_Old">-->
+    <!--<parameter name="browser" value="firefox_old"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="IETest">-->
+    <!--<parameter name="browser" value="ie"/>-->
+    <!--<classes>-->
+    <!--<class name="LoginTest">-->
+    <!--</class>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="MenuTests">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="MenuTests">
+            </class>
+        </classes>
+    </test>
+</suite>
