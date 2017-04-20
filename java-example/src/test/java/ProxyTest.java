@@ -11,13 +11,13 @@ public class ProxyTest extends TestBase {
     @Test
     public void proxyChecks() {
         // create a new HAR with the label "harLog"
-        proxy.newHar("harLog");
+        webDriverHelper.proxy.newHar("harLog");
         driver.get("http://localhost/litecart/admin/");
         LoginHelper.doLogin("admin", "admin");
         driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
         // get the HAR data
-        Har har = proxy.getHar();
+        Har har = webDriverHelper.proxy.getHar();
         har.getLog().getEntries().forEach(l -> System.out.println(l.getResponse().getStatus() + ":" + l.getRequest().getUrl()));
-        proxy.endHar();
+        webDriverHelper.proxy.endHar();
     }
 }

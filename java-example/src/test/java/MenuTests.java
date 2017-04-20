@@ -20,7 +20,7 @@ public class MenuTests extends TestBase {
         for (int i = 0; i < parentMenuItems.size(); i++) {
             WebElement parentMenu = parentMenuItems.get(i);
             String parentMenuLabel = parentMenu.getText();
-            parentMenu.click();
+            inputAndActionsHelper.clickOn(parentMenu);
             WebElement header = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1")));
             System.out.println("Parent Menu: '" + parentMenuLabel + "' is selected and page header is '" + header.getText() + "'");
             //re-take parent menu item as it is no longer attached to DOM
@@ -32,7 +32,7 @@ public class MenuTests extends TestBase {
                 for (int j = 0; j < childMenuItems.size(); j++) {
                     WebElement childMenu = childMenuItems.get(j);
                     String childMenuLabel = childMenu.getText();
-                    childMenu.click();
+                    inputAndActionsHelper.clickOn(childMenu);
                     header = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1")));
                     System.out.println("Child Menu: '" + childMenuLabel + "' is selected and page header is '" + header.getText() + "'");
                     //re-take children items

@@ -27,13 +27,13 @@ public class LoginTest extends TestBase {
         System.out.println("Check that 'Remember Me' checkbox is unchecked by default");
         Assert.assertFalse(saveLogin.isSelected(), "unchecked by default");
         System.out.println("Click on checkbox");
-        saveLogin.click();
+        inputAndActionsHelper.clickOn(saveLogin);
 //        new Actions(driver).moveToElement(saveLogin).click().build().perform();
         System.out.println("Check that checkbox is now checked");
         Assert.assertTrue(saveLogin.isSelected(), "is checked after click");
         WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@name='login']")));
         System.out.println("Click on Login button");
-        loginBtn.click();
+        inputAndActionsHelper.clickOn(loginBtn);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@id='box-apps-menu']")));
         System.out.println("Login successful");
     }

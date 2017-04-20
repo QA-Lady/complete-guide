@@ -34,7 +34,7 @@ public class CountriesTests extends TestBase {
             WebElement zoneNumber = row.findElement(By.xpath("./td[6]"));
             if (Integer.parseInt(zoneNumber.getText()) != 0) {
                 ((Locatable) country).getCoordinates().inViewPort();
-                country.click();
+                inputAndActionsHelper.clickOn(country);
                 wait.until(ExpectedConditions.titleIs("Edit Country | My Store"));
                 WebElement tableHeader = driver.findElement(By.xpath("//table[@id='table-zones']//tr[@class= 'header']"));
                 ((Locatable) tableHeader).getCoordinates().inViewPort();
@@ -73,7 +73,7 @@ public class CountriesTests extends TestBase {
             String countryLabel = country.getText();
             System.out.println("Adding country: " + countryLabel);
             countriesLabels.add(countryLabel);
-            country.click();
+            inputAndActionsHelper.clickOn(country);
             wait.until(ExpectedConditions.stalenessOf(country));
             longWait.until(ExpectedConditions.urlContains("edit_geo_zone&page"));
             wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//table[@id='table-zones']//tr[2]//select[contains(@name,'[zone_code]')]")));

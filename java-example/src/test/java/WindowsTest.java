@@ -20,8 +20,7 @@ public class WindowsTest extends TestBase {
         driver.get("http://localhost/litecart/admin/");
         LoginHelper.doLogin("admin", "admin");
         System.out.println("Click on main Countries menu item");
-        WebElement parentMenuCountries = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='box-apps-menu-wrapper']/ul/li[@id='app-']//span[2][text()='Countries']")));
-        parentMenuCountries.click();
+        inputAndActionsHelper.clickOn(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='box-apps-menu-wrapper']/ul/li[@id='app-']//span[2][text()='Countries']")));
         wait.until(ExpectedConditions.urlToBe("http://localhost/litecart/admin/?app=countries&doc=countries"));
         List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//table[@class='dataTable']//tr[@class='row']")));
         //Open 1st Country in the List for Edit
@@ -30,7 +29,7 @@ public class WindowsTest extends TestBase {
         WebElement country = row.findElement(By.xpath("./td[5]/a"));
         String countryText = country.getText();
         System.out.println("Opening '" + countryText + "' for edit");
-        country.click();
+        inputAndActionsHelper.clickOn(country);
         wait.until(ExpectedConditions.urlContains("edit_country&country_code"));
         List<WebElement> externalLinks = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@class='fa fa-external-link']")));
         for (int i = 0; i < externalLinks.size(); i++) {
@@ -38,7 +37,7 @@ public class WindowsTest extends TestBase {
             String originalWindow = driver.getWindowHandle();
             Set<String> existingWindows = driver.getWindowHandles();
             System.out.println("Click on External Link #" + (i + 1) + " to Open New Window");
-            externalLink.click();
+            inputAndActionsHelper.clickOn(externalLink);
             // the wait using anyWindowOtherThan() function is enough
 //            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
             String newWindow = wait.until(anyWindowOtherThan(existingWindows));

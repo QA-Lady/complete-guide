@@ -26,7 +26,7 @@ public class StylesTests extends TestBase {
             WebElement prSalePriceElem = null;
             String prBeforeSalePrice = null;
             WebElement prBeforeSalePriceElem = null;
-            if (isElementPresent(driver, product, By.xpath(".//*[@class='campaign-price']"))) {
+            if (elementHelper.isElementPresent(driver, product, By.xpath(".//*[@class='campaign-price']"))) {
                 prSalePriceElem = product.findElement(By.xpath(".//*[@class='campaign-price']"));
                 prSalePrice = prSalePriceElem.getText();
                 prBeforeSalePriceElem = product.findElement(By.xpath(".//*[@class='regular-price']"));
@@ -54,7 +54,7 @@ public class StylesTests extends TestBase {
                 System.out.println(i + 1 + ": '" + prName + "' Price: " + prPrice);
             }
             System.out.println("Click on a product to open Product Page");
-            product.click();
+            inputAndActionsHelper.clickOn(product);
 
             System.out.println("Check that product name on Main page and on Product page is the same");
             WebElement nameOnPrPageElem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='title'][@itemprop='name']")));
